@@ -2,20 +2,27 @@
 import { FC, useRef, useState } from "react";
 import HeaderProps from "./header.types";
 import SearchInput from "../search-input";
-import style from "./header.module.css";
 import DropDown from "../dropdown";
 const Header: FC<HeaderProps> = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [selectValue, setSelectValue] = useState<string>("en");
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const linkActive: string = "Home";
+  const routeStyle = "underline underline-offset-[4px] decoration-gray-300";
+  const routes = [
+    { name: "Home", href: "" },
+    { name: "Contact", href: "" },
+    { name: "About", href: "" },
+    { name: "Sign Up", href: "" },
+  ];
   const handleOpenMenu = () => {
     setShowMenu((prev) => !prev);
   };
   return (
     <div className="w-full flex flex-col gap-11 items-center justify-center border-b-slate-100 border-b">
       <div className="flex w-full h-28 md:h-14 items-center bg-black text-white">
-        <div className="flex w-4/5 items-center justify-center gap-3 text-sm  md:text-lg">
-          <p className="flex w-4/5 items-center justify-center gap-3 text-sm  md:text-lg">
+        <div className="flex w-4/5 items-center justify-center gap-3 text-sm lg:text-lg">
+          <p className="flex w-4/5 items-center justify-center gap-3 text-sm lg:text-lg">
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
             <a href="" className="font-bold underline">
               ShopNow
@@ -32,26 +39,26 @@ const Header: FC<HeaderProps> = () => {
         />
       </div>
       <header
-        className={`flex justify-between items-center gap-5 w-4/5 ${style.header}`}
+        className={`flex justify-between items-center gap-5 w-4/5 h-[4em]`}
       >
         <h1 className="font-bold text-2xl">Execlusive</h1>
         <nav className="hidden xl:block ">
           <ul className="flex gap-16 text-lg">
-            <li>
-              <a href="">Home</a>
-            </li>
-            <li>
-              <a href="">Contact</a>
-            </li>
-            <li>
-              <a href="">About</a>
-            </li>
-            <li>
-              <a href="">Sign Up</a>
-            </li>
+            {routes.map((route) => {
+              return (
+                <li>
+                  <a
+                    href={route.href}
+                    className={`${linkActive === route.name ? routeStyle : ""}`}
+                  >
+                    {route.name}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
-        <div className="hidden w-4/5 md:flex xl:w-2/5 gap-10 items-center justify-center">
+        <div className="hidden w-4/5 md:flex xl:w-[30em] gap-10 items-center justify-center">
           <SearchInput
             onChange={(event) => setSearchValue(event.target.value)}
             value={searchValue}
@@ -94,18 +101,22 @@ const Header: FC<HeaderProps> = () => {
             className=" w-4/5 md:hidden justify-between"
           />
           <ul className="flex w-full flex-col items-center gap-5 md:gap-5 text-lg [&_li]:w-full [&_li]:text-center [&_li]:p-2 [&>*:hover]:bg-gray-100">
-            <li >
-              <a href="">Home</a>
-            </li>
-            <li>
-              <a href="">Contact</a>
-            </li>
-            <li>
-              <a href="">About</a>
-            </li>
-            <li>
-              <a href="">Sign Up</a>
-            </li>
+            {routes.map((route) => {
+              return (
+                <li>
+                  <a
+                    href={route.href}
+                    className={`${
+                      linkActive === route.name
+                        ? routeStyle
+                        : ""
+                    }`}
+                  >
+                    {route.name}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </header>
