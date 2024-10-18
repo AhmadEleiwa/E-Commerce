@@ -3,47 +3,71 @@ import { FC, useRef, useState } from "react";
 import HeaderProps from "./header.types";
 import SearchInput from "../search-input";
 import DropDown from "../dropdown";
+import {
+  langauge_localize,
+  LanguagesType,
+} from "@/public/static/localize/language";
 const Header: FC<HeaderProps> = () => {
   const [searchValue, setSearchValue] = useState<string>("");
-  const [selectValue, setSelectValue] = useState<string>("en");
+  const [selectValue, setSelectValue] = useState<LanguagesType>("en");
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const linkActive: string = "Home";
+  const linkActive: string =
+    langauge_localize[selectValue].context["route.home"];
   const routeStyle = "underline underline-offset-[4px] decoration-gray-300";
   const routes = [
-    { name: "Home", href: "" },
-    { name: "Contact", href: "" },
-    { name: "About", href: "" },
-    { name: "Sign Up", href: "" },
+    { name: langauge_localize[selectValue].context["route.home"], href: "" },
+    { name: langauge_localize[selectValue].context["route.contact"], href: "" },
+    { name: langauge_localize[selectValue].context["route.about"], href: "" },
+    { name: langauge_localize[selectValue].context["route.signup"], href: "" },
   ];
+  const searchPlaceholder =
+    langauge_localize[selectValue].context["input.search.placehholder"];
   const handleOpenMenu = () => {
     setShowMenu((prev) => !prev);
+  };
+  const selectHandler = (val: string) => {
+    setSelectValue(val as LanguagesType);
   };
   return (
     <div className="w-full flex flex-col gap-11 items-center justify-center border-b-slate-100 border-b">
       <div className="flex w-full h-28 md:h-14 items-center bg-black text-white">
         <div className="flex w-4/5 items-center justify-center gap-3 text-sm lg:text-lg">
-          <p className="flex w-4/5 items-center justify-center gap-3 text-sm lg:text-lg">
-            Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+          <p
+            dir={langauge_localize[selectValue].dir}
+            className="flex w-4/5 items-center justify-center gap-3 text-sm lg:text-lg"
+          >
+            {langauge_localize[selectValue].context["topheader.content"]}
             <a href="" className="font-bold underline">
-              ShopNow
+              {langauge_localize[selectValue].context["topheader.shownow"]}
             </a>
           </p>
         </div>
         <DropDown
           options={[
-            { name: "English", value: "en" },
-            { name: "Arabic", value: "ar" },
+            {
+              name: langauge_localize[selectValue].context["langauge.english"],
+              value: "en",
+            },
+            {
+              name: langauge_localize[selectValue].context["langauge.arabic"],
+              value: "ar",
+            },
           ]}
           value={selectValue}
-          onSelect={setSelectValue}
+          onSelect={selectHandler}
         />
       </div>
       <header
         className={`flex justify-between items-center gap-5 w-4/5 h-[4em]`}
       >
-        <h1 className="font-bold text-2xl">Execlusive</h1>
+        <h1 className="font-bold text-2xl">
+          {langauge_localize[selectValue].context["logo.title"]}
+        </h1>
         <nav className="hidden xl:block ">
-          <ul className="flex gap-16 text-lg">
+          <ul
+            dir={langauge_localize[selectValue].dir}
+            className="flex gap-16 text-lg"
+          >
             {routes.map((route) => {
               return (
                 <li>
@@ -62,7 +86,7 @@ const Header: FC<HeaderProps> = () => {
           <SearchInput
             onChange={(event) => setSearchValue(event.target.value)}
             value={searchValue}
-            placeholder="what are you looking for?"
+            placeholder={searchPlaceholder}
             className="w-full justify-between"
             onSearch={() => {
               alert(searchValue);
@@ -94,23 +118,19 @@ const Header: FC<HeaderProps> = () => {
           <SearchInput
             onChange={(event) => setSearchValue(event.target.value)}
             value={searchValue}
-            placeholder="what are you looking for?"
+            placeholder={searchPlaceholder}
             onSearch={() => {
               alert(searchValue);
             }}
             className=" w-4/5 md:hidden justify-between"
           />
-          <ul className="flex w-full flex-col items-center gap-5 md:gap-5 text-lg [&_li]:w-full [&_li]:text-center [&_li]:p-2 [&>*:hover]:bg-gray-100">
+          <ul className="flex w-full flex-col items-center gap-5 md:gap-5 text-lg [&_li]:w-full [&_li]:text-center [&_li]:p-2 [&>*:hover]:bg-gray-100 ">
             {routes.map((route) => {
               return (
                 <li>
                   <a
                     href={route.href}
-                    className={`${
-                      linkActive === route.name
-                        ? routeStyle
-                        : ""
-                    }`}
+                    className={`${linkActive === route.name ? routeStyle : ""}`}
                   >
                     {route.name}
                   </a>
