@@ -1,14 +1,14 @@
 import { FC } from "react";
 import SearchInputProps from "./search-input.types";
-import style from "./search-input.module.css";
-const SearchInput: FC<SearchInputProps> = (props) => {
+
+const SearchInput: FC<SearchInputProps> = ({ className, ...props }) => {
   return (
     <div
-      className={`flex justify-center gap-3 bg-secondary border-gray-200 rounded-md align-center p-2 px-5 ${style.searchInput}`}
+      className={`flex justify-center gap-3 bg-secondary h-12 border-gray-200 rounded-md align-center p-2 px-5  ${className}`}
     >
       <input
         type="text"
-        className={"outline-none bg-transparent  w-4/5"}
+        className={"outline-none bg-transparent "}
         {...props}
       />
       <button className="outline-none border-none" onClick={props.onSearch}>
