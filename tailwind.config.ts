@@ -27,7 +27,8 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         secondary:'#DB4444',
-        inputBG:"#FAFAFA"
+        inputBG:"#FAFAFA",
+        primary:"FFFFFF"
       },
     },
   },
