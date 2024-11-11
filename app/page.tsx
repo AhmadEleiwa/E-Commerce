@@ -1,5 +1,6 @@
 import Carousel, { CarouselSlider } from "@/components/carousel";
 import TopClockHeader from "@/components/carousel/top-clock-header";
+import CategorySlider from "@/components/category-slider";
 import { Suspense } from "react";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
             {[1,2,3,4,5,6,7,8,9,10,12,13].map(p=><div className="w-[40em] h-96 bg-red-50">{p}</div>)}
           </Carousel>
         </Suspense>
+        <CategorySlider className="w-4/5 m-auto" />
       </main> 
     </div>
   );
