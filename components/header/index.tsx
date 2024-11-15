@@ -125,7 +125,7 @@ const Header: FC<HeaderProps> = () => {
         <nav
           className={`transition-all h-0  opacity-0 ${
             showMenu ? "opacity-100 h-96 md:h-80" : ""
-          } overflow-hidden flex flex-col items-center justify-center gap-5 py-5 absolute xl:hidden left-0 w-full md:top-[165px] top-[221px]  bg-gray-50 `}
+          } overflow-hidden z-10 flex flex-col items-center justify-center gap-5 py-5 absolute xl:hidden left-0 w-full md:top-[165px] top-[221px]  bg-gray-50 `}
         >
           <SearchInput
             onChange={(event) => setSearchValue(event.target.value)}

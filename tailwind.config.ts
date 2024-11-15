@@ -28,7 +28,14 @@ const config: Config = {
         foreground: "var(--foreground)",
         secondary:'#DB4444',
         inputBG:"#FAFAFA",
-        primary:"FFFFFF"
+        primary:"#FFFFFF",
+        button1:"#00FF66",
+        button2:"#DB4444",
+        buttonHover:"#E07575",
+        textColor:"#ffffff",
+        textColor1:"#7D8184",
+        textColor2:"#000000",
+        cardSecondary:"#F5F5F5"
       },
     },
   },
