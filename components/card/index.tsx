@@ -4,13 +4,13 @@ import { FC } from "react";
 import StarRating from "../star-rating";
 const Card: FC<CardTpye> = ({
   title,
+  price,
   discount = 0,
   isItNew = false,
   showAddCartButton = true,
   showRating = true,
   imgPath,
 }) => {
-  const price = 1160;
   const calculateDiscount = (price: number, discount: number) => {
     return price - price * (discount / 100.0);
   };
@@ -60,7 +60,7 @@ const Card: FC<CardTpye> = ({
               ${calculateDiscount(price, discount)}
             </p>
           )}
-          <p className="line-through">${price}</p>
+          <p className={`${discount > 0?"line-through":"text-button2"}`}>${price}</p>
         </div>
         {showRating && <StarRating initialRate={5} onRate={onRateHandler} />}
       </div>
