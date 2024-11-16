@@ -6,9 +6,10 @@ import React from "react";
 const TopHeader: FC<TopHeaderType> = ({
   title,
   subTitle,
+  endItem
 }) => {
   return (
-    <div className="w-full flex gap-16 items-end">
+    <div className="w-full flex gap-16 items-end justify-between">
       <div className="flex flex-col gap-6">
         <span className="flex gap-2 items-center">
           <span className="w-5 h-10 bg-secondary rounded-md font-bold"></span>
@@ -16,6 +17,7 @@ const TopHeader: FC<TopHeaderType> = ({
         </span>
         <h2 className="text-4xl font-bold">{title}</h2>
       </div>
+      {endItem}
     </div>
   );
 };

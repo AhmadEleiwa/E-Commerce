@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-white py-8">
+    <footer className="bg-black text-white py-8 mt-8">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 px-6 md:px-12">
         {/* Exclusive Section */}
         <div>
