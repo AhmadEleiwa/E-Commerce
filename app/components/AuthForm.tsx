@@ -11,7 +11,7 @@ interface UserDataType {
 interface props{
     isLogin?:boolean
 }
-const AuthForm: FC<props> = (isLogin) => {
+const AuthForm: FC<props> = ({isLogin}) => {
   const [userData, setUserData] = useState<UserDataType>({
     name: "",
     emailOrPhone: "",
