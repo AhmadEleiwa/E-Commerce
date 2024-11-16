@@ -6,7 +6,6 @@ import DropDown from "../dropdown";
 import { getDirection, getText, LanguagesType } from "@/public/static/localize/language";
 import { usePathname } from "next/navigation";
 import useLanguage from "@/hooks/Language/useLanguage";
-import { get } from "http";
 const Header: FC<HeaderProps> = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const {lang,changeLanague} = useLanguage();
