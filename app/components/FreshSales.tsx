@@ -29,6 +29,7 @@ const FresheSales: FC<FresheSalesType> = ({ products }) => {
             showRating={true}
             price={1000}
             imgPath="static/images/product_test.png"
+            initialRating={4}
           />
         ))}
       </Carousel>

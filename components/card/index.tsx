@@ -10,6 +10,7 @@ const Card: FC<CardTpye> = ({
   showAddCartButton = true,
   showRating = true,
   imgPath,
+  initialRating
 }) => {
   const calculateDiscount = (price: number, discount: number) => {
     return price - price * (discount / 100.0);
@@ -62,7 +63,7 @@ const Card: FC<CardTpye> = ({
           )}
           <p className={`${discount > 0?"line-through":"text-button2"}`}>${price}</p>
         </div>
-        {showRating && <StarRating initialRate={5} onRate={onRateHandler} />}
+        {showRating && <StarRating initialRate={3} onRate={onRateHandler} />}
       </div>
     </div>
   );

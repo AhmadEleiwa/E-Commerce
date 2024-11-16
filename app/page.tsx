@@ -31,8 +31,10 @@ export default function Home() {
         <div className="w-[1px] h-full bg-gray-200 hidden md:block"></div>
         <CarouselSlider className="w-full h-full md:w-4/5">
           {[1, 2, 3, 4, 5, 6].map((p) => (
-            <div className="w-[100%] h-96 bg-black text-white flex items-center justify-center text-2xl">
-              {p}
+            <div className="w-[100%] h-96 bg-black text-white flex overflow-y-hidden items-center justify-center text-2xl">
+              {
+                <img src={`https://picsum.photos/1280/40${p}`} height={'100%'} alt="" />
+              }
             </div>
           ))}
         </CarouselSlider>
@@ -49,12 +51,30 @@ export default function Home() {
       <div className="w-full flex flex-col gap-4">
         <TopHeader title="New Arrival" subTitle="Featured" />
         <div className="grid grid-cols-3 grid-rows-2 gap-4 w-full h-[35em] text-textColor">
-          <div className="row-span-2  bg-black rounded">
+          <div className="row-span-2 bg-black rounded  relative ">
             {/* <img width={'100%'} height={'100%'} src="static/images/playstation.png" alt="" /> */}
-            <img src="static/images/playstation.png" width={'100%'} alt="" />
+            <div className="flex flex-col justify-end absolute bottom-4 left-3 w-full z-[10] ">
+              <h1>PlayStation 5</h1>
+              <p>Black and White version of the PS5 coming out on sale.</p>
+              <a href="">Shop Now</a>
+            </div>
+            <img
+              src="static/images/playstation.png"
+              className="absolute left-[%] bottom-0 -z-0"
+              width={"90%"}
+              alt=""
+            />
           </div>
-          <div className="col-span-2 col-start-0  bg-black p-4 rounded">
-            Second Item (2 rows tall)
+          <div className="col-span-2 col-start-0 flex  flex-col justify-end bg-black p-4 rounded relative">
+            <h1>Women’s Collections</h1>
+            <p>Featured woman collections that give you another vibe.</p>
+            <a href="">Shop Now</a>
+
+            <img
+              className="absolute right-[1%] h-full bottom-0 -z-0"
+              src="static/images/attractive-woman-wearing-hat-posing-black-background 1.png"
+              alt=""
+            />
           </div>
           <div className="col-start-2 bg-black p-4 rounded">Third Item</div>
           <div className="col-start-3 bg-black p-4 rounded">Fourth Item</div>

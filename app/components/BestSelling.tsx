@@ -28,6 +28,7 @@ const BestSelling: FC<BestSellingType> = ({ products }) => {
           showAddCartButton={true}
           showRating={true}
           price={1000}
+          initialRating={4}
           imgPath="static/images/product_test.png"
         />
       ))}

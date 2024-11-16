@@ -4,7 +4,7 @@ interface CardTpye{
     price:number
     title:String
     imgPath:string;
-
+    initialRating: number
     showRating?:boolean
     showAddCartButton:boolean
 }
