@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import StarRating from "../star-rating";
+import StarRating, { ratingRange } from "../star-rating";
 const Card: FC<CardTpye> = ({
   title,
   price,
@@ -10,7 +10,8 @@ const Card: FC<CardTpye> = ({
   showAddCartButton = true,
   showRating = true,
   imgPath,
-  initialRating
+  initialRating,
+  addedToWishList,
 }) => {
   const calculateDiscount = (price: number, discount: number) => {
     return price - price * (discount / 100.0);
@@ -19,9 +20,8 @@ const Card: FC<CardTpye> = ({
   const addToCartHandler = () => {
     // Add To Cart Logic
   };
-  const onRateHandler = (p:number) => {
+  const onRateHandler = (p: number) => {
     // On Change User Rate Logic
-
   };
 
   return (
@@ -41,7 +41,22 @@ const Card: FC<CardTpye> = ({
             NEW
           </span>
         ) : undefined}
-
+        <div className="absolute top-3 right-3 flex flex-col gap-2">
+          {addedToWishList ? (
+            <button className=" bg-white w-8 h-8 rounded-full flex items-center justify-center">
+              <img src="static/icons/icon-delete.svg" alt="" />
+            </button>
+          ) : (
+            <>
+              <button className=" bg-white w-8 h-8 rounded-full flex items-center justify-center">
+                <img src="static/icons/heart.svg" alt="" />
+              </button>
+              <button className=" bg-white w-8 h-8 rounded-full flex items-center justify-center">
+                <img src="static/icons/eye.svg" alt="" />
+              </button>
+            </>
+          )}
+        </div>
         <img className="w-4/5" src={imgPath} alt="" />
         <div className="h-0 spacer transition-all  "></div>
         {showAddCartButton && (
@@ -61,9 +76,16 @@ const Card: FC<CardTpye> = ({
               ${calculateDiscount(price, discount)}
             </p>
           )}
-          <p className={`${discount > 0?"line-through":"text-button2"}`}>${price}</p>
+          <p className={`${discount > 0 ? "line-through" : "text-button2"}`}>
+            ${price}
+          </p>
         </div>
-        {showRating && <StarRating initialRate={3} onRate={onRateHandler} />}
+        {showRating && (
+          <StarRating
+            initialRate={initialRating as ratingRange}
+            onRate={onRateHandler}
+          />
+        )}
       </div>
     </div>
   );

@@ -24,12 +24,14 @@ const FresheSales: FC<FresheSalesType> = ({ products }) => {
       >
         {products.map((p) => (
           <Card
+            id={p+""}
             title={"Product Name"}
             showAddCartButton={true}
             showRating={true}
             price={1000}
             imgPath="static/images/product_test.png"
             initialRating={4}
+            addedToWishList={false}
           />
         ))}
       </Carousel>

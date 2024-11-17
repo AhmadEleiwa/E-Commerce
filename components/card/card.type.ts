@@ -1,4 +1,5 @@
 interface CardTpye{
+    id:string
     discount?:number
     isItNew?:boolean
     price:number
@@ -7,4 +8,5 @@ interface CardTpye{
     initialRating: number
     showRating?:boolean
     showAddCartButton:boolean
+    addedToWishList: boolean
 }
