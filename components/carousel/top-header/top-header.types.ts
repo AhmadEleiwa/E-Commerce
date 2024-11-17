@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface TopHeaderType {
   title: string;
-  subTitle: string;
+  subTitle?: string;
   endItem?:ReactNode
 }
 

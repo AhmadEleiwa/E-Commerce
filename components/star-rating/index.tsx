@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 
-type ratingRange = 1 | 2 | 3 | 4 | 5;
+export type ratingRange = 1 | 2 | 3 | 4 | 5;
 interface StartRatingType {
   initialRate: ratingRange;
   onRate:(val:ratingRange)=>void
@@ -18,15 +18,15 @@ const StarRating: FC<StartRatingType> = ({ initialRate, onRate }) => {
   return (
     <div className="flex items-center">
       {lst.map((p) => {
-        let color = "yellow-300";
+        let color = "text-yellow-300";
         if (rate >= p) {
-          color = "yellow-400";
-        } else if (oldVal >= p) color = "yellow-300";
-        else color = "gray-400";
-
+          color = "text-yellow-400";
+        } else if (oldVal >= p) color = "text-yellow-300";
+        else color = "text-gray-100";
+        const style = `w-4 h-4 ${color} me-1`
         return (
           <svg
-            className={`w-4 h-4 text-${color} me-1`}
+            className={style}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
